@@ -500,106 +500,241 @@ document.addEventListener("DOMContentLoaded", function () {
   startSlider();
 });
 
-// Gallery Page JavaScript
-document.addEventListener('DOMContentLoaded', function () {
-
-    const items = Array.from(document.querySelectorAll('.gallery-item'));
-    const galleryCount = document.querySelector('.gallery-count');
+// Gallery Page
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryItems = document.querySelectorAll('.category-item');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const visibleCountSpan = document.getElementById('visibleCount');
     const loadMoreBtn = document.querySelector('.gallery-load-more-btn');
-
+    
+    // Lightbox elements
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.querySelector('.lightbox-image');
-    const closeBtn = document.querySelector('.lightbox-close');
-    const prevBtn = document.querySelector('.lightbox-prev');
-    const nextBtn = document.querySelector('.lightbox-next');
-
-    let currentIndex = 0;
-    let visibleItems = 6; // initial batch
-
-    // ✅ Initial state
-    function updateGallery() {
-        items.forEach((item, index) => {
-            item.style.display = index < visibleItems ? 'block' : 'none';
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const lightboxPrev = document.querySelector('.lightbox-prev');
+    const lightboxNext = document.querySelector('.lightbox-next');
+    
+    let currentCategory = 'all';
+    let visibleItems = 90; // Initially show 9 items
+    let currentImageIndex = 0;
+    let currentVisibleImages = [];
+    
+    // Function to filter gallery items
+    function filterGallery() {
+        let visibleCount = 0;
+        
+        galleryItems.forEach((item, index) => {
+            const itemCategory = item.getAttribute('data-category');
+            
+            // Check if item matches current category
+            if (currentCategory === 'all' || itemCategory === currentCategory) {
+                // Check if item should be visible based on load more limit
+                if (visibleCount < visibleItems) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            } else {
+                item.style.display = 'none';
+            }
         });
-
-        if (galleryCount) {
-            galleryCount.textContent = `${Math.min(visibleItems, items.length)} Projects`;
+        
+        // Update count display
+        const totalVisible = Array.from(galleryItems).filter(item => 
+            item.style.display === 'block'
+        ).length;
+        
+        if (visibleCountSpan) {
+            visibleCountSpan.textContent = totalVisible;
         }
-
-        if (visibleItems >= items.length && loadMoreBtn) {
-            loadMoreBtn.style.display = 'none';
+        
+        // Hide load more button if all items are visible
+        const totalInCategory = Array.from(galleryItems).filter(item => 
+            currentCategory === 'all' || item.getAttribute('data-category') === currentCategory
+        ).length;
+        
+        if (loadMoreBtn) {
+            if (totalVisible >= totalInCategory) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'inline-flex';
+            }
         }
     }
-
-    updateGallery();
-
-    // ✅ Open lightbox
-    items.forEach((item, index) => {
-        item.addEventListener('click', function () {
-            if (item.style.display === 'none') return;
-
-            currentIndex = index;
-            const img = item.querySelector('.gallery-image');
-
+    
+    // Update visible images array for lightbox navigation
+    function updateVisibleImages() {
+        currentVisibleImages = Array.from(galleryItems).filter(item => 
+            item.style.display === 'block'
+        );
+    }
+    
+    // Open lightbox
+    function openLightbox(index) {
+        if (!currentVisibleImages.length) return;
+        
+        currentImageIndex = index;
+        const currentItem = currentVisibleImages[currentImageIndex];
+        const img = currentItem.querySelector('.gallery-image');
+        
+        if (lightboxImg) {
             lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt || 'Gallery Image';
+        }
+        
+        if (lightbox) {
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
-        });
-    });
-
-    // ✅ Close lightbox
+        }
+    }
+    
+    // Close lightbox
     function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
+        if (lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     }
-
-    closeBtn.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-    });
-
-    // ✅ Get only visible items
-    function getVisibleItems() {
-        return items.filter(item => item.style.display !== 'none');
+    
+    // Next image
+    function nextImage() {
+        if (currentVisibleImages.length === 0) return;
+        currentImageIndex = (currentImageIndex + 1) % currentVisibleImages.length;
+        const currentItem = currentVisibleImages[currentImageIndex];
+        const img = currentItem.querySelector('.gallery-image');
+        
+        if (lightboxImg) {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt || 'Gallery Image';
+        }
     }
-
-    // ✅ Navigation
-    function showNext() {
-        const visible = getVisibleItems();
-        currentIndex = (currentIndex + 1) % visible.length;
-
-        const img = visible[currentIndex].querySelector('.gallery-image');
-        lightboxImg.src = img.src;
+    
+    // Previous image
+    function prevImage() {
+        if (currentVisibleImages.length === 0) return;
+        currentImageIndex = (currentImageIndex - 1 + currentVisibleImages.length) % currentVisibleImages.length;
+        const currentItem = currentVisibleImages[currentImageIndex];
+        const img = currentItem.querySelector('.gallery-image');
+        
+        if (lightboxImg) {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt || 'Gallery Image';
+        }
     }
-
-    function showPrev() {
-        const visible = getVisibleItems();
-        currentIndex = (currentIndex - 1 + visible.length) % visible.length;
-
-        const img = visible[currentIndex].querySelector('.gallery-image');
-        lightboxImg.src = img.src;
-    }
-
-    if (nextBtn) nextBtn.addEventListener('click', showNext);
-    if (prevBtn) prevBtn.addEventListener('click', showPrev);
-
-    // ✅ Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('active')) return;
-
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowRight') showNext();
-        if (e.key === 'ArrowLeft') showPrev();
-    });
-
-    // ✅ Load More
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', function () {
-            visibleItems += 6;
-            updateGallery();
+    
+    // Add click event to all gallery items
+    function bindGalleryItemClick() {
+        galleryItems.forEach((item, index) => {
+            // Remove existing listener to avoid duplicates
+            item.removeEventListener('click', item.clickHandler);
+            
+            // Create new click handler
+            item.clickHandler = function(e) {
+                // Don't trigger if clicking on load more button or category badge
+                if (e.target.closest('.gallery-load-more-btn')) return;
+                
+                // Update visible images array before opening
+                updateVisibleImages();
+                
+                // Find index in visible images
+                const visibleIndex = currentVisibleImages.findIndex(visibleItem => visibleItem === item);
+                if (visibleIndex !== -1) {
+                    openLightbox(visibleIndex);
+                }
+            };
+            
+            item.addEventListener('click', item.clickHandler);
         });
     }
-
+    
+    // Category click handler
+    categoryItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Update active class
+            categoryItems.forEach(cat => cat.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Get category
+            currentCategory = this.getAttribute('data-category');
+            
+            // Reset visible items count
+            visibleItems = 9;
+            
+            // Filter gallery
+            filterGallery();
+            
+            // Re-bind click events after filtering
+            setTimeout(() => {
+                bindGalleryItemClick();
+            }, 100);
+        });
+    });
+    
+    // Load more functionality
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+            visibleItems += 6;
+            filterGallery();
+            
+            // Re-bind click events after loading more
+            setTimeout(() => {
+                bindGalleryItemClick();
+            }, 100);
+        });
+    }
+    
+    // Lightbox event listeners
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
+    
+    if (lightboxPrev) {
+        lightboxPrev.addEventListener('click', function(e) {
+            e.stopPropagation();
+            prevImage();
+        });
+    }
+    
+    if (lightboxNext) {
+        lightboxNext.addEventListener('click', function(e) {
+            e.stopPropagation();
+            nextImage();
+        });
+    }
+    
+    // Close lightbox when clicking outside the image
+    if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+    }
+    
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox || !lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+        if (e.key === 'ArrowLeft') {
+            prevImage();
+        }
+        if (e.key === 'ArrowRight') {
+            nextImage();
+        }
+    });
+    
+    // Initial filter and bindings
+    filterGallery();
+    bindGalleryItemClick();
+    
+    // Also bind on window resize (in case layout changes)
+    window.addEventListener('resize', function() {
+        bindGalleryItemClick();
+    });
 });
 
 // Series Gallery JavaScript
@@ -855,10 +990,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Load more functionality
     const loadMoreBtn = document.querySelector('.load-more-btn');
-    let itemsToShow = 9;
+    let itemsToShow = 30;
     const allSeriesItems = document.querySelectorAll('.series-item');
     
-    // Initialize: hide items beyond first 9 for each category
+    // Initialize: hide items beyond itemsToShow for each category
     function initializeVisibility() {
         const activeFilter = document.querySelector('.series-filter-btn.active');
         const filterValue = activeFilter ? activeFilter.getAttribute('data-filter') : 'all';
@@ -872,9 +1007,9 @@ document.addEventListener('DOMContentLoaded', function() {
             );
         }
         
-        // Hide items beyond first 9
+        // Hide items beyond first itemsToShow
         filteredItems.forEach((item, index) => {
-            if (index >= 9) {
+            if (index >= itemsToShow) {
                 item.style.display = 'none';
             } else {
                 item.style.display = 'block';
@@ -884,11 +1019,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update count
         const visibleCount = filteredItems.filter(item => item.style.display !== 'none').length;
         if (seriesCount) {
-            seriesCount.textContent = `${visibleCount} Projects`;
+            seriesCount.textContent = `${visibleCount} Series`;
         }
         
         // Show/hide load more button
-        if (filteredItems.length > 9) {
+        if (filteredItems.length > itemsToShow) {
             loadMoreBtn.style.display = 'inline-flex';
         } else {
             loadMoreBtn.style.display = 'none';
@@ -952,4 +1087,273 @@ document.addEventListener('DOMContentLoaded', function() {
     filterBtns.forEach(btn => {
         observer.observe(btn, { attributes: true });
     });
+});
+
+// Quote Form JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    const quoteForm = document.getElementById('quoteForm');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Remove existing messages
+            const existingMessages = quoteForm.querySelectorAll('.success-message, .error-message-global');
+            existingMessages.forEach(msg => msg.remove());
+            
+            // Simple validation
+            let isValid = true;
+            const requiredFields = quoteForm.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    isValid = false;
+                    
+                    // Add error message
+                    let errorMsg = field.parentElement.querySelector('.error-message');
+                    if (!errorMsg) {
+                        errorMsg = document.createElement('div');
+                        errorMsg.className = 'error-message';
+                        errorMsg.textContent = 'This field is required';
+                        field.parentElement.appendChild(errorMsg);
+                    }
+                } else {
+                    field.classList.remove('error');
+                    const errorMsg = field.parentElement.querySelector('.error-message');
+                    if (errorMsg) errorMsg.remove();
+                }
+            });
+            
+            // Email validation
+            const emailField = document.getElementById('email');
+            if (emailField && emailField.value.trim()) {
+                const emailPattern = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+                if (!emailPattern.test(emailField.value.trim())) {
+                    emailField.classList.add('error');
+                    isValid = false;
+                    let errorMsg = emailField.parentElement.querySelector('.error-message');
+                    if (!errorMsg) {
+                        errorMsg = document.createElement('div');
+                        errorMsg.className = 'error-message';
+                        errorMsg.textContent = 'Please enter a valid email address';
+                        emailField.parentElement.appendChild(errorMsg);
+                    }
+                }
+            }
+            
+            // Phone validation (basic)
+            const phoneField = document.getElementById('phone');
+            if (phoneField && phoneField.value.trim()) {
+                const phonePattern = /^[\d\s\+\(\)\-]{8,}$/;
+                if (!phonePattern.test(phoneField.value.trim())) {
+                    phoneField.classList.add('error');
+                    isValid = false;
+                    let errorMsg = phoneField.parentElement.querySelector('.error-message');
+                    if (!errorMsg) {
+                        errorMsg = document.createElement('div');
+                        errorMsg.className = 'error-message';
+                        errorMsg.textContent = 'Please enter a valid phone number';
+                        phoneField.parentElement.appendChild(errorMsg);
+                    }
+                }
+            }
+            
+            if (isValid) {
+                // Collect form data
+                const formData = {
+                    name: document.getElementById('name')?.value || '',
+                    role: document.getElementById('role')?.value || '',
+                    email: document.getElementById('email')?.value || '',
+                    phone: document.getElementById('phone')?.value || '',
+                    shopping_for: Array.from(document.querySelectorAll('input[name="shopping_for[]"]:checked')).map(cb => cb.value),
+                    project_description: document.getElementById('project_description')?.value || '',
+                    how_found: document.getElementById('how_found')?.value || '',
+                    newsletter: document.querySelector('input[name="newsletter"]')?.checked || false
+                };
+                
+                // Show loading state
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span class="btn-text">Sending...</span> <span class="btn-icon">⏳</span>';
+                submitBtn.disabled = true;
+                
+                // Send AJAX request to PHP handler
+                fetch('submit-quote.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Success message
+                        const successMsg = document.createElement('div');
+                        successMsg.className = 'success-message';
+                        successMsg.innerHTML = `
+                            <div class="success-icon">✓</div>
+                            <div class="success-text">
+                                <strong>Thank you for your interest!</strong><br>
+                                ${data.message || 'We\'ll contact you within 24 hours to discuss your project.'}
+                            </div>
+                        `;
+                        quoteForm.prepend(successMsg);
+                        
+                        // Reset form
+                        quoteForm.reset();
+                        
+                        // Scroll to success message
+                        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        // Error message from server
+                        const errorMsg = document.createElement('div');
+                        errorMsg.className = 'error-message-global';
+                        errorMsg.innerHTML = `
+                            <div class="error-icon">⚠️</div>
+                            <div class="error-text">
+                                <strong>Something went wrong!</strong><br>
+                                ${data.message || 'Please try again or call us directly.'}
+                            </div>
+                        `;
+                        quoteForm.prepend(errorMsg);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'error-message-global';
+                    errorMsg.innerHTML = `
+                        <div class="error-icon">⚠️</div>
+                        <div class="error-text">
+                            <strong>Network Error!</strong><br>
+                            Please check your connection and try again.
+                        </div>
+                    `;
+                    quoteForm.prepend(errorMsg);
+                })
+                .finally(() => {
+                    // Restore button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+            }
+        });
+        
+        // Remove error on input
+        quoteForm.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(field => {
+            field.addEventListener('input', function() {
+                this.classList.remove('error');
+                const errorMsg = this.parentElement.querySelector('.error-message');
+                if (errorMsg) errorMsg.remove();
+            });
+        });
+    }
+});
+
+// Hero Slider with 5 Slides
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize slider
+    function initSlider() {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+        
+        if (!slides.length) return;
+        
+        let currentSlide = 0;
+        let slideInterval;
+        const autoPlayDelay = 6000;
+        
+        function showSlide(index) {
+            // Remove active class from all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            if (dots.length) dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Ensure index is within bounds
+            if (index >= slides.length) index = 0;
+            if (index < 0) index = slides.length - 1;
+            
+            slides[index].classList.add('active');
+            if (dots.length) dots[index].classList.add('active');
+            currentSlide = index;
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        function startAutoPlay() {
+            if (slideInterval) clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, autoPlayDelay);
+        }
+        
+        function stopAutoPlay() {
+            if (slideInterval) {
+                clearInterval(slideInterval);
+                slideInterval = null;
+            }
+        }
+        
+        // Show first slide
+        showSlide(0);
+        
+        // Start autoplay immediately
+        startAutoPlay();
+        
+        // Add event listeners
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                prevSlide();
+                startAutoPlay(); // Restart timer
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                nextSlide();
+                startAutoPlay(); // Restart timer
+            });
+        }
+        
+        // Dot navigation
+        if (dots.length) {
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', function() {
+                    showSlide(i);
+                    startAutoPlay(); // Restart timer
+                });
+            });
+        }
+        
+        // Pause on hover
+        const slider = document.querySelector('.hero-slider');
+        if (slider) {
+            slider.addEventListener('mouseenter', stopAutoPlay);
+            slider.addEventListener('mouseleave', startAutoPlay);
+        }
+        
+        // Touch swipe for mobile
+        let touchStart = 0;
+        slider?.addEventListener('touchstart', (e) => {
+            touchStart = e.changedTouches[0].screenX;
+        });
+        slider?.addEventListener('touchend', (e) => {
+            const touchEnd = e.changedTouches[0].screenX;
+            if (touchEnd < touchStart - 50) nextSlide();
+            if (touchEnd > touchStart + 50) prevSlide();
+            startAutoPlay();
+        });
+    }
+    
+    // Initialize after a short delay to ensure all elements are ready
+    setTimeout(initSlider, 100);
 });

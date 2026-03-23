@@ -48,6 +48,7 @@
                     <li><a href="<?php echo BASE_URL; ?>/index.php" class="footer-link">Home</a></li>
                     <li><a href="<?php echo BASE_URL; ?>/gallery.php" class="footer-link">Gallery</a></li>
                     <li><a href="<?php echo BASE_URL; ?>/about.php" class="footer-link">About Us</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>/contact.php" class="footer-link">Contact Us</a></li>
                 </ul>
             </div>
 
@@ -57,7 +58,8 @@
                 <ul class="footer-links">
                     <li><a href="<?php echo BASE_URL; ?>/product-catalogues.php" class="footer-link">Product Catalogues</a></li>
                     <li><a href="<?php echo BASE_URL; ?>/collections.php" class="footer-link">Collections</a></li>
-                    <li><a href="<?php echo BASE_URL; ?>/contact.php" class="footer-link">Contact Us</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>/sintered-stone.php" class="footer-link">Sintered Stone</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>/quote.php" class="footer-link">Get a Quote</a></li>
                 </ul>
             </div>
 
@@ -75,7 +77,7 @@
                         <svg viewBox="0 0 24 24" width="18" height="18" class="contact-icon">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                         </svg>
-                        <span class="contact-text">23 Adeola Odeku Street, Victoria Island, Lagos, Nigeria</span>
+                        <span class="contact-text">10 Westerner Industrial Avenue, Isheri Oke, Ojodu Berger, Lagos State, Nigeria</span>
                     </li>
                     <li class="contact-item">
                         <svg viewBox="0 0 24 24" width="18" height="18" class="contact-icon">
@@ -107,13 +109,7 @@
                 </div>
             </div>
         </div>
-
-        <!-- CTA Button -->
-        <div class="footer-cta">
-            <a href="<?php echo BASE_URL; ?>/contact.php" class="footer-cta-button">Request a Quote →</a>
-            <a href="#" class="footer-cta-button footer-cta-button-secondary">Calculate Tiles →</a>
-        </div>
-
+        
         <!-- Copyright Section -->
         <div class="footer-bottom">
             <p class="copyright">© <?php echo date('Y'); ?> Moreroom Stone Nigeria. All rights reserved.</p>

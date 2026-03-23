@@ -65,7 +65,7 @@ include 'layouts/header.php';
                 <h2 class="cta-title">Need Help Choosing?</h2>
                 <p class="cta-text">Our stone experts are here to assist you in finding the perfect sintered stone for your project</p>
                 <div class="cta-buttons">
-                    <a href="<?php echo BASE_URL; ?>/contact.php" class="btn btn-primary btn-large hover-glow">Book Consultation</a>
+                    <a href="<?php echo BASE_URL; ?>/quote.php" class="btn btn-primary btn-large hover-glow">Book Consultation</a>
                     <a href="<?php echo BASE_URL; ?>/contact.php" class="btn btn-outline-light btn-large hover-float">Request Samples</a>
                 </div>
             </div>

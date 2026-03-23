@@ -5,27 +5,128 @@ include 'layouts/header.php';
 <!-- Home Page - Moreroom Stone Nigeria -->
 <main id="tiles-home" class="tiles-page">
 
-    <!-- Hero Slider Section - Single Slider -->
+    <!-- Hero Slider Section - 5 Slides -->
     <section class="hero-slider">
         <div class="slider-container">
+            <!-- Slide 1 -->
             <div class="slide active">
                 <div class="slide-bg">
                     <img src="<?php echo BASE_URL; ?>/assets/images/home-slider.jpeg" 
-                         alt="Premium Sintered Stone" class="slide-image">
+                        alt="Premium Sintered Stone" class="slide-image">
                     <div class="slide-overlay"></div>
                 </div>
                 <div class="slide-content container">
                     <div class="slide-text-wrapper">
-                        <span class="section-tag animate-fade-up-bounce">Premium Quality</span>
-                        <h1 class="slide-title animate-fade-up-bounce stagger-1">Premium Sintered Stone</span> Surfaces</h1>
-                        <p class="slide-subtitle animate-fade-up-bounce stagger-2">For Modern Architecture. Designed for kitchens, walls, floors, and architectural spaces.</p>
-                        <div class="slide-buttons animate-fade-up-bounce stagger-3">
-                            <a href="<?php echo BASE_URL; ?>/collections.php" class="btn btn-primary hover-glow">Explore Collections</a>
-                            <a href="<?php echo BASE_URL; ?>/contact.php" class="btn btn-outline hover-float">Get a Quote</a>
+                        <span class="slide-tag">Premium Quality</span>
+                        <h1 class="slide-title">Premium Sintered Stone Surfaces For Modern Architecture</h1>
+                        <p class="slide-subtitle">Designed for kitchens, walls, floors, and architectural spaces.</p>
+                        <div class="slide-buttons">
+                            <a href="<?php echo BASE_URL; ?>/collections.php" class="btn-primary-slide">Explore Collections</a>
+                            <a href="<?php echo BASE_URL; ?>/quote.php" class="btn-outline-slide">Get a Quote</a>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- Slide 2 -->
+            <div class="slide">
+                <div class="slide-bg">
+                    <img src="<?php echo BASE_URL; ?>/assets/images/home-slider-2.jpeg" 
+                        alt="Durability and Elegance" class="slide-image">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content container">
+                    <div class="slide-text-wrapper">
+                        <span class="slide-tag">Unmatched Quality</span>
+                        <h1 class="slide-title">Premium Sintered Stone Surfaces For Modern Architecture</h1>
+                        <p class="slide-subtitle">Designed for kitchens, walls, floors, and architectural spaces.</p>
+                        <div class="slide-buttons">
+                            <a href="<?php echo BASE_URL; ?>/collections.php" class="btn-primary-slide">Explore Collections</a>
+                            <a href="<?php echo BASE_URL; ?>/quote.php" class="btn-outline-slide">Get a Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="slide">
+                <div class="slide-bg">
+                    <img src="<?php echo BASE_URL; ?>/assets/images/home-slider-3.jpeg" 
+                        alt="Aesthetics and Excellence" class="slide-image">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content container">
+                    <div class="slide-text-wrapper">
+                        <span class="slide-tag">Design Excellence</span>
+                        <h1 class="slide-title">Premium Sintered Stone Surfaces For Modern Architecture</h1>
+                        <p class="slide-subtitle">Designed for kitchens, walls, floors, and architectural spaces.</p>
+                        <div class="slide-buttons">
+                            <a href="<?php echo BASE_URL; ?>/collections.php" class="btn-primary-slide">Explore Collections</a>
+                            <a href="<?php echo BASE_URL; ?>/quote.php" class="btn-outline-slide">Get a Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="slide">
+                <div class="slide-bg">
+                    <img src="<?php echo BASE_URL; ?>/assets/images/the-perfect-blend.jpeg" 
+                        alt="Sustainable Luxury" class="slide-image">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content container">
+                    <div class="slide-text-wrapper">
+                        <span class="slide-tag">Eco-Friendly</span>
+                        <h1 class="slide-title">Premium Sintered Stone Surfaces For Modern Architecture</h1>
+                        <p class="slide-subtitle">Designed for kitchens, walls, floors, and architectural spaces.</p>
+                        <div class="slide-buttons">
+                            <a href="<?php echo BASE_URL; ?>/collections.php" class="btn-primary-slide">Explore Collections</a>
+                            <a href="<?php echo BASE_URL; ?>/quote.php" class="btn-outline-slide">Get a Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5 -->
+            <div class="slide">
+                <div class="slide-bg">
+                    <img src="<?php echo BASE_URL; ?>/assets/images/natural-stone-beauty.jpeg" 
+                        alt="Endless Possibilities" class="slide-image">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content container">
+                    <div class="slide-text-wrapper">
+                        <span class="slide-tag">Versatile Applications</span>
+                        <h1 class="slide-title">Premium Sintered Stone Surfaces For Modern Architecture</h1>
+                        <p class="slide-subtitle">Designed for kitchens, walls, floors, and architectural spaces.</p>
+                        <div class="slide-buttons">
+                            <a href="<?php echo BASE_URL; ?>/collections.php" class="btn-primary-slide">Explore Collections</a>
+                            <a href="<?php echo BASE_URL; ?>/quote.php" class="btn-outline-slide">Get a Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slider Controls -->
+        <button class="slider-arrow prev" id="prevSlide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <button class="slider-arrow next" id="nextSlide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
     </section>
 
@@ -34,8 +135,8 @@ include 'layouts/header.php';
         <div class="container">
             <div class="blend-grid">
                 <div class="blend-content animate-fade-left">
-                    <span class="section-tag">The Perfect Blend</span>
-                    <h2 class="blend-title">of <span class="text-gradient">Durability and Elegance</span></h2>
+                    <!-- <span class="section-tag"></span> -->
+                    <h2 class="blend-title">The Perfect Blend of <span class="text-gradient">Durability and Elegance</span></h2>
                     <p class="blend-text">Our products are crafted to meet top-tier industry standards, ensuring exceptional quality in every slab. Choosing Sintered stone means selecting surfaces that strike a perfect balance between elegance, durability, and value.</p>
                     <div class="blend-features">
                         <div class="blend-feature">
@@ -133,9 +234,9 @@ include 'layouts/header.php';
             <div class="range-grid">
                 <div class="range-card animate-zoom-in">
                     <div class="range-image-wrapper">
-                        <img src="<?php echo BASE_URL; ?>/assets/images/luxury/freezing-emeral.jpg" alt="Freezing Emeral" class="range-image">
+                        <img src="<?php echo BASE_URL; ?>/assets/images/luxury/freezing-emeral.jpg" alt="Freezing Emerald" class="range-image">
                         <div class="range-overlay">
-                            <h3 class="range-title">Freezing Emeral</h3>
+                            <h3 class="range-title">Freezing Emerald</h3>
                             <p class="range-text">From classic to contemporary</p>
                         </div>
                     </div>
@@ -199,7 +300,7 @@ include 'layouts/header.php';
     </section>
 
     <!-- Why Choose Us -->
-    <section class="features-section">
+    <!-- <section class="features-section">
         <div class="container">
             <div class="section-header text-center">
                 <span class="section-tag">Why Choose Us</span>
@@ -232,7 +333,7 @@ include 'layouts/header.php';
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Call to Action -->
     <section class="cta-section">
@@ -241,7 +342,7 @@ include 'layouts/header.php';
                 <h2 class="cta-title">Ready to Transform Your Space?</h2>
                 <p class="cta-text">Visit our showroom or book a free consultation with our sintered stone experts</p>
                 <div class="cta-buttons">
-                    <a href="<?php echo BASE_URL; ?>/contact.php" class="btn btn-primary btn-large hover-glow">Book Consultation</a>
+                    <a href="<?php echo BASE_URL; ?>/quote.php" class="btn btn-primary btn-large hover-glow">Book Consultation</a>
                     <a href="<?php echo BASE_URL; ?>/contact.php" class="btn btn-outline-light btn-large hover-float">Request Samples</a>
                 </div>
             </div>

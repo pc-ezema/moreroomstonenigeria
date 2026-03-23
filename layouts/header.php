@@ -48,9 +48,11 @@ require_once dirname(__DIR__) . '/config.php';
                     <li class="nav-item"><a href="<?php echo BASE_URL; ?>/about.php" class="nav-link <?php echo ($currentPage == 'about.php') ? 'active' : ''; ?>">About Us</a></li>
                     <li class="nav-item"><a href="<?php echo BASE_URL; ?>/product-catalogues.php" class="nav-link <?php echo ($currentPage == 'product-catalogues.php') ? 'active' : ''; ?>">Product Catalogues</a></li>
                     <li class="nav-item"><a href="<?php echo BASE_URL; ?>/collections.php" class="nav-link <?php echo ($currentPage == 'collections.php') ? 'active' : ''; ?>">Collections</a></li>
+                    <li class="nav-item"><a href="<?php echo BASE_URL; ?>/sintered-stone.php" class="nav-link <?php echo ($currentPage == 'sintered-stone.php') ? 'active' : ''; ?>">Sintered Stone</a></li>
                     <li class="nav-item"><a href="<?php echo BASE_URL; ?>/gallery.php" class="nav-link <?php echo ($currentPage == 'gallery.php') ? 'active' : ''; ?>">Gallery</a></li>
+                    <li class="nav-item"><a href="<?php echo BASE_URL; ?>/contact.php" class="nav-link <?php echo ($currentPage == 'contact.php') ? 'active' : ''; ?>">Contact</a></li>
                 </ul>
-                <a href="<?php echo BASE_URL; ?>/contact.php" class="cta-button">Get a Quote →</a>
+                <a href="<?php echo BASE_URL; ?>/quote.php" class="cta-button">Get a Quote →</a>
             </nav>
 
             <!-- Mobile Menu Button -->
@@ -67,7 +69,7 @@ require_once dirname(__DIR__) . '/config.php';
                 <!-- Logo in mobile menu -->
                 <li class="nav-item mobile-logo-item">
                     <a href="<?php echo BASE_URL; ?>/index.php" class="nav-link active">
-                        <img src="<?php echo BASE_URL; ?>/assets/images/moreroomstoneng-logo.png" alt="Moreroomstonenigeria" style="height: 40px; width: auto;">
+                        <img src="<?php echo BASE_URL; ?>/assets/images/moreroomstoneng-logo.png" alt="Moreroomstonenigeria" style="height: 100px; width: auto;">
                     </a>
                 </li>
                 
@@ -75,8 +77,10 @@ require_once dirname(__DIR__) . '/config.php';
                 <li class="nav-item"><a href="<?php echo BASE_URL; ?>/about.php" class="nav-link <?php echo ($currentPage == 'about.php') ? 'active' : ''; ?>">About Us</a></li>
                 <li class="nav-item"><a href="<?php echo BASE_URL; ?>/products.php" class="nav-link <?php echo ($currentPage == 'product-catalogues.php') ? 'active' : ''; ?>">Products</a></li>
                 <li class="nav-item"><a href="<?php echo BASE_URL; ?>/collections.php" class="nav-link <?php echo ($currentPage == 'collections.php') ? 'active' : ''; ?>">Collections</a></li>
+                <li class="nav-item"><a href="<?php echo BASE_URL; ?>/sintered-stone.php" class="nav-link <?php echo ($currentPage == 'sintered-stone.php') ? 'active' : ''; ?>">Sintered Stone</a></li>
                 <li class="nav-item"><a href="<?php echo BASE_URL; ?>/gallery.php" class="nav-link <?php echo ($currentPage == 'gallery.php') ? 'active' : ''; ?>">Gallery</a></li>
-                <li class="nav-item"><a href="<?php echo BASE_URL; ?>/contact.php" class="cta-button" style="display: inline-block; margin-left: 0;">Get a Quote →</a></li>
+                <li class="nav-item"><a href="<?php echo BASE_URL; ?>/contact.php" class="nav-link <?php echo ($currentPage == 'contact.php') ? 'active' : ''; ?>">Contact</a></li>
+                <li class="nav-item"><a href="<?php echo BASE_URL; ?>/quote.php" class="cta-button" style="display: inline-block; margin-left: 0;">Get a Quote →</a></li>
             </ul>
         </nav>
 
