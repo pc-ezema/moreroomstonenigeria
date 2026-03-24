@@ -101,7 +101,7 @@
 
         <!-- Showroom Locations -->
         <div class="footer-showrooms">
-            <h3 class="footer-title">Our Showrooms</h3>
+            <h3 class="footer-title">Our Showroom</h3>
             <div class="showrooms-grid">
                 <div class="showroom-item">
                     <strong>Ojodu Berger</strong><br>
@@ -109,7 +109,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Copyright Section -->
         <div class="footer-bottom">
             <p class="copyright">© <?php echo date('Y'); ?> Moreroom Stone Nigeria. All rights reserved.</p>

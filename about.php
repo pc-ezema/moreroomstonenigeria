@@ -67,8 +67,8 @@ include 'layouts/header.php';
                 <!-- Vision Card -->
                 <div class="vision-card animate-scale">
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" width="48" height="48">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-10H7v2h3v2l3-3-3-3v2z" fill="currentColor"/>
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-10H7v2h3v2l3-3-3-3v2z"/>
                         </svg>
                     </div>
                     <h3 class="card-title">Our Vision</h3>
@@ -78,17 +78,17 @@ include 'layouts/header.php';
                 <!-- Mission Card -->
                 <div class="mission-card animate-scale stagger-1">
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" width="48" height="48">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/>
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
                         </svg>
                     </div>
                     <h3 class="card-title">Our Mission</h3>
                     <p class="card-text">To deliver exceptional products that meet the evolving needs of architects, designers, and homeowners, fostering a sustainable environment through our scalable distribution model.</p>
                     <ul class="mission-list">
-                        <li>✓ Cultivate long-term partnerships</li>
-                        <li>✓ Enhance market presence</li>
-                        <li>✓ Make sintered stone the preferred choice</li>
-                        <li>✓ Continuous improvement strategies</li>
+                        <li>Cultivate long-term partnerships</li>
+                        <li>Enhance market presence</li>
+                        <li>Make sintered stone the preferred choice</li>
+                        <li>Continuous improvement strategies</li>
                     </ul>
                 </div>
             </div>

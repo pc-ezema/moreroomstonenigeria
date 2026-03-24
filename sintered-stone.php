@@ -8,7 +8,7 @@ include 'layouts/header.php';
     <!-- Standard Hero Section -->
     <section class="page-hero">
         <div class="page-hero-background">
-            <img src="<?php echo BASE_URL; ?>/assets/images/the-perfect-blend.jpeg"
+            <img src="<?php echo BASE_URL; ?>/assets/images/aesthetics-meet-excellence.jpeg"
                 alt="Sintered Stone Collections" class="page-hero-image">
             <div class="page-hero-overlay"></div>
         </div>
@@ -203,7 +203,6 @@ include 'layouts/header.php';
     <section class="support-section">
         <div class="container">
             <div class="support-card">
-                <div class="support-icon">🤝</div>
                 <h2 class="support-title">Our <span class="text-gradient">Support</span></h2>
                 <p class="support-text">Our experienced design team is committed to guiding you through every stage of your project. From providing samples and detailed quotations to supporting templating and installation, we ensure a seamless and professional experience from start to finish.</p>
                 <a href="<?php echo BASE_URL; ?>/contact.php" class="support-btn">Request a Consultation →</a>

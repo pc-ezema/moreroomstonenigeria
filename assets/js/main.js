@@ -1357,3 +1357,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize after a short delay to ensure all elements are ready
     setTimeout(initSlider, 100);
 });
+
+// ========== VISION & MISSION SCROLL ANIMATION ==========
+document.addEventListener("DOMContentLoaded", function() {
+    // Intersection Observer for scroll animations
+    const animateElements = document.querySelectorAll('.animate-scale');
+    
+    if (animateElements.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+    } else {
+        // Fallback for older browsers
+        animateElements.forEach(element => {
+            element.classList.add('animated');
+        });
+    }
+});

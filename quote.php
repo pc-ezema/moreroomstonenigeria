@@ -8,7 +8,7 @@ include 'layouts/header.php';
     <!-- Hero Section -->
     <section class="page-hero">
         <div class="page-hero-background">
-            <img src="<?php echo BASE_URL; ?>/assets/images/the-perfect-blend.jpeg" 
+            <img src="<?php echo BASE_URL; ?>/assets/images/natural-stone-beauty.jpeg" 
                  alt="Book Consultation" class="page-hero-image">
             <div class="page-hero-overlay"></div>
         </div>
