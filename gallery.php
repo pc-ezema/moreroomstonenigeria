@@ -34,38 +34,76 @@ include 'layouts/header.php';
                     </div>
                     <ul class="categories-list">
                         <li class="category-item active" data-category="all">
-                            <span class="category-icon">🎨</span>
                             <span class="category-name">All Projects</span>
                         </li>
                         <li class="category-item" data-category="bathroom">
-                            <span class="category-icon">🛁</span>
                             <span class="category-name">Bathroom</span>
                         </li>
+                        <li class="category-item" data-category="floor">
+                            <span class="category-name">Floor</span>
+                        </li>
                         <li class="category-item" data-category="kitchen">
-                            <span class="category-icon">🍳</span>
                             <span class="category-name">Kitchen</span>
                         </li>
                         <li class="category-item" data-category="living-room">
-                            <span class="category-icon">🛋️</span>
                             <span class="category-name">Living Room</span>
                         </li>
                         <li class="category-item" data-category="lobby">
-                            <span class="category-icon">🏢</span>
                             <span class="category-name">Lobby</span>
                         </li>
+                        <li class="category-item" data-category="staircase">
+                            <span class="category-name">Staircase</span>
+                        </li>
                         <li class="category-item" data-category="wall">
-                            <span class="category-icon">🧱</span>
                             <span class="category-name">Wall</span>
                         </li>
                     </ul>
                     <div class="filter-stats">
-                        <span class="gallery-count">Showing <span id="visibleCount">21</span> of 21 projects</span>
+                        <span class="gallery-count">Showing <span id="visibleCount">21</span></span>
                     </div>
                 </div>
 
                 <!-- Gallery Grid - Right Side -->
                 <div class="gallery-main">
                     <div class="gallery-grid">
+                        <!-- Floors Projects -->
+                        <?php for ($i = 1; $i <= 28; $i++): ?>
+                            <div class="gallery-item" data-category="floor">
+                                <div class="gallery-image-wrapper">
+                                    <img src="<?php echo BASE_URL; ?>/assets/images/gallery/floors/gallery<?php echo $i; ?>.jpeg" 
+                                        alt="Floor Project <?php echo $i; ?>" class="gallery-image">
+                                    <div class="image-overlay"></div>
+                                    <div class="category-badge">Floor</div>
+                                </div>
+                            </div>
+                        <?php endfor; ?>
+                        <div class="gallery-item" data-category="floor">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/floors/gallery29.jpg" alt="Floor Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Floor</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="floor">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/floors/gallery30.jpg" alt="Floor Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Floor</div>
+                            </div>
+                        </div>
+
+                        <!-- Staircase Projects -->
+                        <?php for ($i = 1; $i <= 17; $i++): ?>
+                            <div class="gallery-item" data-category="staircase">
+                                <div class="gallery-image-wrapper">
+                                    <img src="<?php echo BASE_URL; ?>/assets/images/gallery/staircase/gallery<?php echo $i; ?>.jpeg" 
+                                        alt="Staircase Project <?php echo $i; ?>" class="gallery-image">
+                                    <div class="image-overlay"></div>
+                                    <div class="category-badge">Staircase</div>
+                                </div>
+                            </div>
+                        <?php endfor; ?>
+
                         <!-- Bathroom Projects -->
                         <div class="gallery-item" data-category="bathroom">
                             <div class="gallery-image-wrapper">
@@ -130,6 +168,17 @@ include 'layouts/header.php';
                                 <div class="category-badge">Bathroom</div>
                             </div>
                         </div>
+
+                        <?php for ($i = 1; $i <= 15; $i++): ?>
+                            <div class="gallery-item" data-category="bathroom">
+                                <div class="gallery-image-wrapper">
+                                    <img src="<?php echo BASE_URL; ?>/assets/images/gallery/bathroom/gallery<?php echo $i; ?>.jpeg" 
+                                        alt="Bathroom Project <?php echo $i; ?>" class="gallery-image">
+                                    <div class="image-overlay"></div>
+                                    <div class="category-badge">Bathroom</div>
+                                </div>
+                            </div>
+                        <?php endfor; ?>
 
                         <!-- Kitchen Projects -->
                         <div class="gallery-item" data-category="kitchen">
@@ -236,6 +285,182 @@ include 'layouts/header.php';
                             </div>
                         </div>
 
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery14.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery15.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery16.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery17.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery18.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery19.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery20.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery21.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery22.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery23.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery24.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery25.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery26.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery27.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery28.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery29.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery30.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery31.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery32.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery33.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery34.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="kitchen">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/kitchen/gallery35.jpeg" alt="Kitchen Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Kitchen</div>
+                            </div>
+                        </div>
+
                         <!-- Living Room Projects -->
                         <div class="gallery-item" data-category="living-room">
                             <div class="gallery-image-wrapper">
@@ -312,6 +537,110 @@ include 'layouts/header.php';
                         <div class="gallery-item" data-category="living-room">
                             <div class="gallery-image-wrapper">
                                 <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery10.jpg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery11.jpeg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery12.jpeg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery13.jpeg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery14.jpeg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery15.jpeg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery16.jpeg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery17.jpeg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery18.jpeg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery19.jpeg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery20.jpeg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery21.jpg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery22.jpg" alt="Living Room Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Living Room</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="living-room">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/living-area/gallery23.jpg" alt="Living Room Project" class="gallery-image">
                                 <div class="image-overlay"></div>
                                 <div class="category-badge">Living Room</div>
                             </div>
@@ -498,6 +827,342 @@ include 'layouts/header.php';
                         <div class="gallery-item" data-category="wall">
                             <div class="gallery-image-wrapper">
                                 <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/微信图片_20230213102221.jpg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery1.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery2.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery3.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery4.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery5.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery6" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery7" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery8.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery9.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery10.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery11.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery12.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery13.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery14.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery15.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery16.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery17.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery18.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery19.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery20.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery21.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery22.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery23.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery24.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery25.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery26.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery27.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery28.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery29.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery30.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery31.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery32.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery33.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery34.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery35.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery36.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery37.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery38.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery39.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery40.jpeg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery41.jpg" alt="Wall Project" class="gallery-image">
+                                <div class="image-overlay"></div>
+                                <div class="category-badge">Wall</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-category="wall">
+                            <div class="gallery-image-wrapper">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/gallery/wall/gallery42.jpg" alt="Wall Project" class="gallery-image">
                                 <div class="image-overlay"></div>
                                 <div class="category-badge">Wall</div>
                             </div>

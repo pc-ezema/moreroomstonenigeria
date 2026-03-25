@@ -73,36 +73,36 @@ include 'layouts/header.php';
                     Unlike quartz, it remains stable under heat and UV exposure; unlike granite, it is lighter and 
                     easier to maintain; and unlike marble, it is highly resistant to chemicals and wear. 
                 </p>
-                <p style="margin-top: 1rem;">In addition to its wide variety of patterns and finishes, sintered stone offers several key advantages: </p>
+                <p class="section-subtitle" style="margin-top: 1rem;">In addition to its wide variety of patterns and finishes, sintered stone offers several key advantages:</p>
             </div>
 
             <div class="why-choose-grid">
-                <div class="why-card animate-zoom-in">
+                <div class="why-card animate-zoom-in" data-feature="durability">
                     <div class="why-icon">💎</div>
                     <h3>Exceptional Durability</h3>
                     <p>Highly resistant to thermal shock, scratches, and stains</p>
                 </div>
-                <div class="why-card animate-zoom-in stagger-1">
+                <div class="why-card animate-zoom-in stagger-1" data-feature="versatility">
                     <div class="why-icon">🏠</div>
                     <h3>Versatile Application</h3>
                     <p>Suitable for both indoor and outdoor use with strong UV resistance</p>
                 </div>
-                <div class="why-card animate-zoom-in stagger-2">
+                <div class="why-card animate-zoom-in stagger-2" data-feature="waterproof">
                     <div class="why-icon">💧</div>
                     <h3>Waterproof Performance</h3>
                     <p>Near-zero absorption rate, resistant to liquids and moisture</p>
                 </div>
-                <div class="why-card animate-zoom-in stagger-3">
+                <div class="why-card animate-zoom-in stagger-3" data-feature="hygienic">
                     <div class="why-icon">🧼</div>
                     <h3>Safe & Hygienic</h3>
                     <p>Made from natural materials, free from resins, safe for direct food contact</p>
                 </div>
-                <div class="why-card animate-zoom-in stagger-4">
+                <div class="why-card animate-zoom-in stagger-4" data-feature="maintenance">
                     <div class="why-icon">✨</div>
                     <h3>Low Maintenance</h3>
                     <p>Easy to clean with minimal effort and no special care required</p>
                 </div>
-                <div class="why-card animate-zoom-in stagger-5">
+                <div class="why-card animate-zoom-in stagger-5" data-feature="heavy-duty">
                     <div class="why-icon">🏆</div>
                     <h3>Built for Heavy Use</h3>
                     <p>Ideal for high-traffic environments</p>
@@ -115,41 +115,18 @@ include 'layouts/header.php';
                     countertops, wall cladding, backsplashes, flooring, shower areas, fireplace surrounds, exterior 
                     installations, and bespoke furniture pieces.  
                 </p>
-             </div>
+            </div>
+        </div>
+    </section>
 
-            <!-- Comparison Section -->
-            <!-- <div class="comparison-section">
-                <div class="comparison-grid">
-                    <div class="comparison-item">
-                        <div class="comparison-icon">✨</div>
-                        <div class="comparison-text">
-                            <strong>Quartz</strong>
-                            <p>Durability + low maintenance</p>
-                        </div>
-                    </div>
-                    <div class="comparison-item">
-                        <div class="comparison-icon">🏔️</div>
-                        <div class="comparison-text">
-                            <strong>Granite</strong>
-                            <p>Structural strength</p>
-                        </div>
-                    </div>
-                    <div class="comparison-item">
-                        <div class="comparison-icon">🏛️</div>
-                        <div class="comparison-text">
-                            <strong>Marble</strong>
-                            <p>Timeless elegance</p>
-                        </div>
-                    </div>
-                    <div class="comparison-item highlight">
-                        <div class="comparison-icon">⭐</div>
-                        <div class="comparison-text">
-                            <strong>Sintered Stone</strong>
-                            <p>All qualities, none of the drawbacks</p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+    <!-- Our Support Section -->
+    <section class="support-section">
+        <div class="container">
+            <div class="support-card">
+                <h2 class="support-title">Our <span class="text-gradient">Support</span></h2>
+                <p class="support-text">Our experienced design team is committed to guiding you through every stage of your project. From providing samples and detailed quotations to supporting templating and installation, we ensure a seamless and professional experience from start to finish.</p>
+                <a href="<?php echo BASE_URL; ?>/contact.php" class="support-btn">Request a Consultation →</a>
+            </div>
         </div>
     </section>
 
@@ -163,49 +140,36 @@ include 'layouts/header.php';
             </div>
 
             <div class="applications-grid">
-                <div class="app-card animate-zoom-in">
-                    <div class="app-icon">🍳</div>
+                <div class="app-card animate-zoom-in" data-app="kitchen">
+                    <span class="corner-accent"></span>
+                    <div class="app-icon"><img src="<?php echo BASE_URL; ?>/assets/images/perfect/kitchen.jpg" alt="Kitchen Worktops"></div>
                     <h3>Kitchen Worktops</h3>
                 </div>
-                <div class="app-card animate-zoom-in stagger-1">
-                    <div class="app-icon">🧱</div>
+                <div class="app-card animate-zoom-in stagger-1" data-app="wall">
+                    <span class="corner-accent"></span>
+                    <div class="app-icon"><img src="<?php echo BASE_URL; ?>/assets/images/perfect/wall.jpg" alt="Wall Cladding"></div>
                     <h3>Wall Cladding</h3>
                 </div>
-                <div class="app-card animate-zoom-in stagger-2">
-                    <div class="app-icon">🍽️</div>
+                <div class="app-card animate-zoom-in stagger-2" data-app="backsplash">
+                    <span class="corner-accent"></span>
+                    <div class="app-icon"><img src="<?php echo BASE_URL; ?>/assets/images/perfect/back-splash.webp" alt="Back Splash"></div>
                     <h3>Backsplashes</h3>
                 </div>
-                <div class="app-card animate-zoom-in stagger-3">
-                    <div class="app-icon">🚶</div>
+                <div class="app-card animate-zoom-in stagger-3" data-app="flooring">
+                    <span class="corner-accent"></span>
+                    <div class="app-icon"><img src="<?php echo BASE_URL; ?>/assets/images/perfect/flooring.jpg" alt="Flooring"></div>
                     <h3>Flooring</h3>
                 </div>
-                <div class="app-card animate-zoom-in stagger-4">
-                    <div class="app-icon">🚿</div>
+                <div class="app-card animate-zoom-in stagger-4" data-app="shower">
+                    <span class="corner-accent"></span>
+                    <div class="app-icon"><img src="<?php echo BASE_URL; ?>/assets/images/perfect/shower-area.jpg" alt="Shower Area"></div>
                     <h3>Shower Areas</h3>
                 </div>
-                <div class="app-card animate-zoom-in stagger-5">
-                    <div class="app-icon">🔥</div>
-                    <h3>Fireplace Surrounds</h3>
-                </div>
-                <div class="app-card animate-zoom-in stagger-6">
-                    <div class="app-icon">🌳</div>
+                <div class="app-card animate-zoom-in stagger-6" data-app="exterior">
+                    <span class="corner-accent"></span>
+                    <div class="app-icon"><img src="<?php echo BASE_URL; ?>/assets/images/perfect/exterior.jpg" alt="Exterior"></div>
                     <h3>Exterior Installations</h3>
                 </div>
-                <div class="app-card animate-zoom-in stagger-7">
-                    <div class="app-icon">🪑</div>
-                    <h3>Bespoke Furniture</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Support Section -->
-    <section class="support-section">
-        <div class="container">
-            <div class="support-card">
-                <h2 class="support-title">Our <span class="text-gradient">Support</span></h2>
-                <p class="support-text">Our experienced design team is committed to guiding you through every stage of your project. From providing samples and detailed quotations to supporting templating and installation, we ensure a seamless and professional experience from start to finish.</p>
-                <a href="<?php echo BASE_URL; ?>/contact.php" class="support-btn">Request a Consultation →</a>
             </div>
         </div>
     </section>

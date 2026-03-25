@@ -75,7 +75,7 @@ require_once dirname(__DIR__) . '/config.php';
                 
                 <li class="nav-item"><a href="<?php echo BASE_URL; ?>/index.php" class="nav-link <?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>">Home</a></li>
                 <li class="nav-item"><a href="<?php echo BASE_URL; ?>/about.php" class="nav-link <?php echo ($currentPage == 'about.php') ? 'active' : ''; ?>">About Us</a></li>
-                <li class="nav-item"><a href="<?php echo BASE_URL; ?>/products.php" class="nav-link <?php echo ($currentPage == 'product-catalogues.php') ? 'active' : ''; ?>">Products</a></li>
+                <li class="nav-item"><a href="<?php echo BASE_URL; ?>/product-catalogues.php" class="nav-link <?php echo ($currentPage == 'product-catalogues.php') ? 'active' : ''; ?>">Products</a></li>
                 <li class="nav-item"><a href="<?php echo BASE_URL; ?>/collections.php" class="nav-link <?php echo ($currentPage == 'collections.php') ? 'active' : ''; ?>">Collections</a></li>
                 <li class="nav-item"><a href="<?php echo BASE_URL; ?>/sintered-stone.php" class="nav-link <?php echo ($currentPage == 'sintered-stone.php') ? 'active' : ''; ?>">Sintered Stone</a></li>
                 <li class="nav-item"><a href="<?php echo BASE_URL; ?>/gallery.php" class="nav-link <?php echo ($currentPage == 'gallery.php') ? 'active' : ''; ?>">Gallery</a></li>

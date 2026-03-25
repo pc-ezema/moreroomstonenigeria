@@ -515,7 +515,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightboxNext = document.querySelector('.lightbox-next');
     
     let currentCategory = 'all';
-    let visibleItems = 90; // Initially show 9 items
+    let visibleItems = 100; // Initially show 9 items
     let currentImageIndex = 0;
     let currentVisibleImages = [];
     
@@ -659,7 +659,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentCategory = this.getAttribute('data-category');
             
             // Reset visible items count
-            visibleItems = 9;
+            visibleItems = 100;
             
             // Filter gallery
             filterGallery();
@@ -1382,6 +1382,458 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
         // Fallback for older browsers
         animateElements.forEach(element => {
+            element.classList.add('animated');
+        });
+    }
+});
+
+/* ============================================
+   CORE VALUES SECTION - CLICK EFFECTS
+   ============================================ */
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // ========== VALUE CARD CLICK EFFECTS ==========
+    const valueCards = document.querySelectorAll('.value-card');
+    
+    if (valueCards.length > 0) {
+        
+        // Function to create ripple effect
+        function createRipple(event, card) {
+            const rect = card.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            card.appendChild(ripple);
+            
+            // Remove ripple after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+        
+        // Add click event listeners to each card
+        valueCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Create ripple effect at click position
+                createRipple(e, this);
+                
+                // Add flash effect
+                this.classList.add('flash');
+                setTimeout(() => {
+                    this.classList.remove('flash');
+                }, 300);
+                
+                // Add pulse effect to icon
+                const iconWrapper = this.querySelector('.value-icon-wrapper');
+                if (iconWrapper) {
+                    iconWrapper.style.animation = 'icon-pulse 0.5s ease-out';
+                    setTimeout(() => {
+                        iconWrapper.style.animation = '';
+                    }, 500);
+                }
+                
+                // Add click scale effect
+                this.classList.add('click-effect');
+                setTimeout(() => {
+                    this.classList.remove('click-effect');
+                }, 300);
+                
+                // Optional: Log which value was clicked
+                const valueName = this.querySelector('.value-title')?.textContent || 'Unknown';
+                console.log(`Value clicked: ${valueName}`);
+                
+                // Optional: Show toast notification (you can customize this)
+                showValueNotification(valueName);
+            });
+            
+            // Add hover effect for better UX
+            card.addEventListener('mouseenter', function() {
+                this.style.cursor = 'pointer';
+            });
+        });
+        
+        // Optional: Show notification when value is clicked
+        function showValueNotification(valueName) {
+            // Create notification element if it doesn't exist
+            let notification = document.querySelector('.value-notification');
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.className = 'value-notification';
+                document.body.appendChild(notification);
+                
+                // Add styles for notification
+                const style = document.createElement('style');
+                style.textContent = `
+                    .value-notification {
+                        position: fixed;
+                        bottom: 30px;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(100px);
+                        background: linear-gradient(135deg, #d01323 0%, #e63946 100%);
+                        color: #0a0a0a;
+                        padding: 12px 24px;
+                        border-radius: 50px;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                        z-index: 9999;
+                        opacity: 0;
+                        transition: all 0.3s ease;
+                        white-space: nowrap;
+                        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+                    }
+                    .value-notification.show {
+                        transform: translateX(-50%) translateY(0);
+                        opacity: 1;
+                    }
+                    @media (max-width: 576px) {
+                        .value-notification {
+                            white-space: normal;
+                            text-align: center;
+                            max-width: 90%;
+                            font-size: 0.8rem;
+                            padding: 10px 20px;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Show notification
+            notification.textContent = `✨ ${valueName} - Our guiding principle ✨`;
+            notification.classList.add('show');
+            
+            // Hide notification after 2 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+    }
+    
+    // ========== SCROLL ANIMATION FOR VALUE CARDS ==========
+    const animatedElements = document.querySelectorAll('.animate-float');
+    
+    if (animatedElements.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+    } else {
+        // Fallback for older browsers
+        animatedElements.forEach(element => {
+            element.classList.add('animated');
+        });
+    }
+});
+
+/* ============================================
+   WHY CHOOSE SECTION - CLICK EFFECTS
+   ============================================ */
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // ========== WHY CHOOSE CARD CLICK EFFECTS ==========
+    const whyCards = document.querySelectorAll('.why-card');
+    
+    if (whyCards.length > 0) {
+        
+        // Function to create ripple effect
+        function createRipple(event, card) {
+            const rect = card.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            card.appendChild(ripple);
+            
+            // Remove ripple after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+        
+        // Add click event listeners to each card
+        whyCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Create ripple effect at click position
+                createRipple(e, this);
+                
+                // Add flash effect
+                this.classList.add('flash');
+                setTimeout(() => {
+                    this.classList.remove('flash');
+                }, 300);
+                
+                // Add pulse effect to icon
+                const icon = this.querySelector('.why-icon');
+                if (icon) {
+                    icon.style.animation = 'icon-pulse 0.5s ease-out';
+                    setTimeout(() => {
+                        icon.style.animation = '';
+                    }, 500);
+                }
+                
+                // Get feature name for notification
+                const featureName = this.querySelector('h3')?.textContent || 'Feature';
+                const featureDesc = this.querySelector('p')?.textContent || '';
+                
+                // Show notification
+                showWhyChooseNotification(featureName, featureDesc);
+            });
+            
+            // Add hover effect for better UX
+            card.addEventListener('mouseenter', function() {
+                this.style.cursor = 'pointer';
+            });
+        });
+        
+        // Function to show notification
+        function showWhyChooseNotification(featureName, featureDesc) {
+            // Create notification element if it doesn't exist
+            let notification = document.querySelector('.why-choose-notification');
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.className = 'why-choose-notification';
+                document.body.appendChild(notification);
+                
+                // Add styles for notification
+                const style = document.createElement('style');
+                style.textContent = `
+                    .why-choose-notification {
+                        position: fixed;
+                        bottom: 30px;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(100px);
+                        background: linear-gradient(135deg, #d01323 0%, #e63946 100%);
+                        color: #0a0a0a;
+                        padding: 14px 28px;
+                        border-radius: 50px;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                        z-index: 9999;
+                        opacity: 0;
+                        transition: all 0.3s ease;
+                        max-width: 90%;
+                        text-align: center;
+                        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+                        font-family: 'Inter', sans-serif;
+                    }
+                    .why-choose-notification strong {
+                        color: #0a0a0a;
+                        font-weight: 700;
+                    }
+                    .why-choose-notification.show {
+                        transform: translateX(-50%) translateY(0);
+                        opacity: 1;
+                    }
+                    @media (max-width: 576px) {
+                        .why-choose-notification {
+                            font-size: 0.8rem;
+                            padding: 10px 20px;
+                            white-space: normal;
+                            line-height: 1.4;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Show notification
+            notification.innerHTML = `✨ <strong>${featureName}</strong> - ${featureDesc} ✨`;
+            notification.classList.add('show');
+            
+            // Hide notification after 2.5 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2500);
+        }
+    }
+    
+    // ========== SCROLL ANIMATION FOR WHY CARDS ==========
+    const animatedCards = document.querySelectorAll('.animate-zoom-in');
+    
+    if (animatedCards.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        animatedCards.forEach(element => {
+            observer.observe(element);
+        });
+    } else {
+        // Fallback for older browsers
+        animatedCards.forEach(element => {
+            element.classList.add('animated');
+        });
+    }
+});
+
+/* ============================================
+   APPLICATIONS SECTION - CLICK EFFECTS
+   ============================================ */
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // ========== APPLICATIONS CARD CLICK EFFECTS ==========
+    const appCards = document.querySelectorAll('.app-card');
+    
+    if (appCards.length > 0) {
+        
+        // Function to create ripple effect
+        function createRipple(event, card) {
+            const rect = card.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            card.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 800);
+        }
+        
+        // Add click event listeners
+        appCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Create ripple effect
+                createRipple(e, this);
+                
+                // Add flash effect
+                this.classList.add('flash');
+                setTimeout(() => {
+                    this.classList.remove('flash');
+                }, 400);
+                
+                // Add clicked class for icon animation
+                this.classList.add('clicked');
+                setTimeout(() => {
+                    this.classList.remove('clicked');
+                }, 500);
+                
+                // Get application name
+                const appName = this.querySelector('h3')?.textContent || 'Application';
+                
+                // Show floating notification
+                showAppNotification(appName);
+                
+                // Optional: Log to console
+                console.log(`Application selected: ${appName}`);
+            });
+            
+            // Add hover effect
+            card.addEventListener('mouseenter', function() {
+                this.style.cursor = 'pointer';
+            });
+        });
+        
+        // Function to show notification
+        function showAppNotification(appName) {
+            let notification = document.querySelector('.app-notification');
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.className = 'app-notification';
+                document.body.appendChild(notification);
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    .app-notification {
+                        position: fixed;
+                        bottom: 30px;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(100px);
+                        background: linear-gradient(135deg, #d01323 0%, #e63946 100%);
+                        color: #0a0a0a;
+                        padding: 12px 24px;
+                        border-radius: 50px;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                        z-index: 9999;
+                        opacity: 0;
+                        transition: all 0.3s ease;
+                        white-space: nowrap;
+                        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+                        font-family: 'Inter', sans-serif;
+                    }
+                    .app-notification.show {
+                        transform: translateX(-50%) translateY(0);
+                        opacity: 1;
+                    }
+                    @media (max-width: 576px) {
+                        .app-notification {
+                            white-space: normal;
+                            text-align: center;
+                            max-width: 90%;
+                            font-size: 0.8rem;
+                            padding: 10px 20px;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            notification.innerHTML = `✨ ${appName} - Perfect for your project ✨`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+    }
+    
+    // ========== SCROLL ANIMATION ==========
+    const animatedCards = document.querySelectorAll('.animate-zoom-in');
+    
+    if (animatedCards.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        animatedCards.forEach(element => {
+            observer.observe(element);
+        });
+    } else {
+        animatedCards.forEach(element => {
             element.classList.add('animated');
         });
     }

@@ -106,7 +106,7 @@ include 'layouts/header.php';
 
             <div class="values-grid">
                 <!-- Excellence -->
-                <div class="value-card animate-float">
+                <div class="value-card animate-float" data-value="excellence">
                     <div class="value-icon-wrapper">
                         <div class="value-icon">✨</div>
                     </div>
@@ -115,7 +115,7 @@ include 'layouts/header.php';
                 </div>
 
                 <!-- Integrity -->
-                <div class="value-card animate-float stagger-1">
+                <div class="value-card animate-float stagger-1" data-value="integrity">
                     <div class="value-icon-wrapper">
                         <div class="value-icon">🤝</div>
                     </div>
@@ -124,7 +124,7 @@ include 'layouts/header.php';
                 </div>
 
                 <!-- Reliability -->
-                <div class="value-card animate-float stagger-2">
+                <div class="value-card animate-float stagger-2" data-value="reliability">
                     <div class="value-icon-wrapper">
                         <div class="value-icon">🛡️</div>
                     </div>
