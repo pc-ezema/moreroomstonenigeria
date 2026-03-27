@@ -1,8 +1,6 @@
 // assets/js/main.js - Consolidated and Fixed
 
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("Site initialized");
-
   // ===== HEADER FUNCTIONALITY =====
   const header = document.getElementById("mainHeader");
   const mobileBtn = document.getElementById("mobileMenuBtn");
@@ -363,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function () {
               // Remove success message after 5 seconds
               setTimeout(() => {
                 successMsg.remove();
-              }, 5000);
+              }, 10000);
             } else {
               // Show error message
               const errorMsg = document.createElement("div");
@@ -374,7 +372,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
               setTimeout(() => {
                 errorMsg.remove();
-              }, 5000);
+              }, 10000);
             }
           })
           .catch((error) => {
@@ -386,7 +384,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setTimeout(() => {
               errorMsg.remove();
-            }, 5000);
+            }, 10000);
           })
           .finally(() => {
             // Restore button
@@ -407,20 +405,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
   }
-
-  // FAQ Toggle
-  faqItems.forEach((item) => {
-    item.addEventListener("click", function () {
-      this.classList.toggle("active");
-
-      // Optional: close other FAQs
-      faqItems.forEach((otherItem) => {
-        if (otherItem !== this && otherItem.classList.contains("active")) {
-          otherItem.classList.remove("active");
-        }
-      });
-    });
-  });
 });
 
 // Hero Slider
@@ -1837,4 +1821,218 @@ document.addEventListener("DOMContentLoaded", function() {
             element.classList.add('animated');
         });
     }
+});
+
+// Download Modal Functions
+let currentDownloadFile = '';
+let currentDownloadName = '';
+
+function openDownloadModal(catalogueFile, catalogueName) {
+    currentDownloadFile = catalogueFile;
+    currentDownloadName = catalogueName;
+    
+    const modal = document.getElementById('downloadModal');
+    const fileInput = document.getElementById('catalogueFile');
+    const nameInput = document.getElementById('catalogueName');
+    
+    if (fileInput) fileInput.value = catalogueFile;
+    if (nameInput) nameInput.value = catalogueName;
+    
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+            document.getElementById('fullName')?.focus();
+        }, 100);
+    }
+}
+
+function closeDownloadModal() {
+    const modal = document.getElementById('downloadModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+        const form = document.getElementById('downloadForm');
+        if (form) form.reset();
+    }
+}
+
+function closeSuccessModal() {
+    const modal = document.getElementById('successModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+}
+
+// Reliable download function using fetch and blob
+async function downloadFile(url, filename) {
+    try {
+        // Show loading indicator
+        const loadingMsg = document.createElement('div');
+        loadingMsg.className = 'download-loading';
+        loadingMsg.textContent = 'Preparing download...';
+        loadingMsg.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #d62828; color: white; padding: 10px 20px; border-radius: 5px; z-index: 10000;';
+        document.body.appendChild(loadingMsg);
+        
+        // Fetch the file
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        // Get the file as a blob
+        const blob = await response.blob();
+        
+        // Create a temporary URL for the blob
+        const blobUrl = window.URL.createObjectURL(blob);
+        
+        // Create a hidden anchor element
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = filename;
+        link.style.display = 'none';
+        
+        // Append to body, click, and remove
+        document.body.appendChild(link);
+        link.click();
+        
+        // Clean up
+        setTimeout(() => {
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(blobUrl);
+        }, 100);
+        
+        // Remove loading message
+        setTimeout(() => {
+            if (loadingMsg && loadingMsg.parentNode) {
+                loadingMsg.remove();
+            }
+        }, 1000);
+        
+        return true;
+        
+    } catch (error) {
+        console.error('Download error:', error);
+        
+        // Fallback: Open in new window if fetch fails
+        window.open(url, '_blank');
+        
+        return false;
+    }
+}
+
+// Handle form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadForm = document.getElementById('downloadForm');
+    
+    if (downloadForm) {
+        downloadForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const fullName = document.getElementById('fullName').value;
+            const userEmail = document.getElementById('userEmail').value;
+            const userPhone = document.getElementById('userPhone').value;
+            const catalogueFile = document.getElementById('catalogueFile').value;
+            const catalogueName = document.getElementById('catalogueName').value;
+            const subscribeNewsletter = document.getElementById('subscribeNewsletter').checked;
+            
+            // Validate
+            if (!fullName || !userEmail || !userPhone) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+            if (!emailRegex.test(userEmail)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Validate phone (basic)
+            if (userPhone.length < 8) {
+                alert('Please enter a valid phone number');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="btn-text">Processing...</span>';
+            submitBtn.disabled = true;
+            
+            try {
+                const response = await fetch('download-handler.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        fullName: fullName,
+                        userEmail: userEmail,
+                        userPhone: userPhone,
+                        catalogueFile: catalogueFile,
+                        catalogueName: catalogueName,
+                        subscribeNewsletter: subscribeNewsletter
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Close the download modal
+                    closeDownloadModal();
+                    
+                    // Start the download in background
+                    await downloadFile(data.downloadUrl, data.catalogueFile);
+                    
+                    // Show success modal
+                    const successModal = document.getElementById('successModal');
+                    if (successModal) {
+                        successModal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                    
+                    // Auto close success modal after 5 seconds
+                    setTimeout(() => {
+                        closeSuccessModal();
+                    }, 5000);
+                    
+                } else {
+                    alert('Error: ' + (data.message || 'Could not process download. Please try again.'));
+                }
+            } catch (error) {
+                // console.error('Error:', error);
+                alert('Network error. Please check your connection and try again.');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+    
+    // Close modals when clicking outside
+    window.addEventListener('click', function(event) {
+        const downloadModal = document.getElementById('downloadModal');
+        const successModal = document.getElementById('successModal');
+        
+        if (event.target === downloadModal) {
+            closeDownloadModal();
+        }
+        if (event.target === successModal) {
+            closeSuccessModal();
+        }
+    });
+    
+    // Close with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeDownloadModal();
+            closeSuccessModal();
+        }
+    });
 });

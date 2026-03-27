@@ -1,5 +1,12 @@
 <?php
 include 'layouts/header.php';
+
+require_once 'components/breadcrumbs.php';
+
+$breadcrumbs = [
+    ['name' => 'Sintered Stone', 'url' => '']
+];
+renderBreadcrumbs($breadcrumbs);
 ?>
 
 <!-- Collections Page - Moreroom Stone Nigeria -->

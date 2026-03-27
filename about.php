@@ -1,5 +1,12 @@
 <?php
 include 'layouts/header.php';
+
+require_once 'components/breadcrumbs.php';
+
+$breadcrumbs = [
+    ['name' => 'About Us', 'url' => '']
+];
+renderBreadcrumbs($breadcrumbs);
 ?>
 
 <!-- About Page - Moreroom Stone Nigeria -->

@@ -1,5 +1,12 @@
 <?php
 include 'layouts/header.php';
+
+require_once 'components/breadcrumbs.php';
+
+$breadcrumbs = [
+    ['name' => 'Contact Us', 'url' => '']
+];
+renderBreadcrumbs($breadcrumbs);
 ?>
 
 <!-- Contact Page - Moreroom Stone Nigeria -->
@@ -27,8 +34,8 @@ include 'layouts/header.php';
         <div class="container">
             <div class="section-header text-center">
                 <span class="section-tag">Visit Us</span>
-                <h2 class="section-title">Our Showroom & <span class="text-gradient">Warehouse</span></h2>
-                <p class="section-subtitle">Experience our premium sintered stone surfaces in person</p>
+                <h2 class="section-title" style="color: #fff;">Our Showroom & <span class="text-gradient">Warehouse</span></h2>
+                <p class="section-subtitle" style="color: #fff;">Experience our premium sintered stone surfaces in person</p>
             </div>
 
             <div class="showroom-grid">

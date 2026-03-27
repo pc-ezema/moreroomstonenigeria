@@ -1,5 +1,12 @@
 <?php
 include 'layouts/header.php';
+
+require_once 'components/breadcrumbs.php';
+
+$breadcrumbs = [
+    ['name' => 'Project Catalogues', 'url' => '']
+];
+renderBreadcrumbs($breadcrumbs);
 ?>
 
 <!-- Products Page - Moreroom Stone Nigeria -->
@@ -38,25 +45,91 @@ include 'layouts/header.php';
                     <h3 class="catalogue-title">Collection Catalogue</h3>
                     <p class="catalogue-description">Overview of all sintered stone collections with specifications</p>
 
-                    <a href="<?php echo BASE_URL; ?>/assets/catalogues/1200x2700-Sintered-Stone-Moreroom.pdf" class="catalogue-btn" download>
+                    <button class="catalogue-btn" onclick="openDownloadModal('1200x2700-Sintered-Stone-Moreroom.pdf', 'Collection Catalogue')">
                         <span>Download PDF</span>
                         <span class="btn-arrow">↓</span>
-                    </a>
+                    </button>
                 </div>
 
                 <!-- Technical Specifications -->
                 <div class="catalogue-card animate-zoom-in stagger-1">
                     <div class="catalogue-icon">📘</div>
-                    <h3 class="catalogue-title">Collection Catalogue</h3>
-                    <p class="catalogue-description">Overview of all sintered stone collections with specifications</p>
-                    <a href="<?php echo BASE_URL; ?>/assets/catalogues/Latest-3200x1600-Sintered-Moreroom-Stone-Catalog.pdf" class="catalogue-btn" download>
+                    <h3 class="catalogue-title">Latest Collection Catalogue</h3>
+                    <p class="catalogue-description">Complete catalogue with all new arrivals and specifications</p>
+
+                    <button class="catalogue-btn" onclick="openDownloadModal('Latest-3200x1600-Sintered-Moreroom-Stone-Catalog.pdf', 'Latest Collection Catalogue')">
                         <span>Download PDF</span>
                         <span class="btn-arrow">↓</span>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Download Modal -->
+    <div id="downloadModal" class="download-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Download Catalogue</h3>
+                <button class="modal-close" onclick="closeDownloadModal()">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <p class="modal-description">Please provide your details to download the catalogue. We'll send you updates about new products and special offers.</p>
+
+                <form id="downloadForm" class="download-form">
+                    <input type="hidden" id="catalogueFile" name="catalogueFile">
+                    <input type="hidden" id="catalogueName" name="catalogueName">
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" class="form-input" placeholder="John Doe" required>
+                        <div class="input-focus-effect"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userEmail">Email Address <span class="required">*</span></label>
+                        <input type="email" id="userEmail" name="userEmail" class="form-input" placeholder="john@example.com" required>
+                        <div class="input-focus-effect"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userPhone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="userPhone" name="userPhone" class="form-input" placeholder="+234 123 456 7890" required>
+                        <div class="input-focus-effect"></div>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="subscribeNewsletter" name="subscribeNewsletter" checked>
+                        <label for="subscribeNewsletter">Subscribe to our newsletter for product updates and offers</label>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Download Now</span>
+                            <span class="btn-icon">↓</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="download-modal">
+        <div class="modal-content success-modal">
+            <div class="modal-header">
+                <h3>Download Started!</h3>
+                <button class="modal-close" onclick="closeSuccessModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">✓</div>
+                <p class="success-message">Your download will begin shortly.</p>
+                <p class="success-submessage">Check your email for confirmation and product information.</p>
+                <button class="close-btn" onclick="closeSuccessModal()">Continue Browsing</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Call to Action -->
     <section class="cta-section">

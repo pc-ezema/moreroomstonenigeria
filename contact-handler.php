@@ -173,7 +173,7 @@ try {
                     <p>" . nl2br(htmlspecialchars($message)) . "</p>
                 </div>
                 
-                <p>If you have any urgent matters, please call us at +1 (234) 567-890.</p>
+                <p>If you have any urgent matters, please call us at +2348139466765</p>
                 
                 <p>Best regards,<br>
                 <strong>The Moreroom Stone Nigeria Team</strong></p>

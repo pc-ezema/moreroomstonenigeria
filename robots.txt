@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /temp/
+Disallow: /cache/
+Disallow: /config.php
+Disallow: /seo-functions.php
+
+# Sitemap location
+Sitemap: https://moreroomstonenigeria.ng/sitemap.php
+
+# Crawl delay (adjust based on your server)
+Crawl-delay: 1
+
+# Specify host
+Host: https://moreroomstonenigeria.ng
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

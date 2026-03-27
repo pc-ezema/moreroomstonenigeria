@@ -1,5 +1,12 @@
 <?php
 include 'layouts/header.php';
+
+require_once 'components/breadcrumbs.php';
+
+$breadcrumbs = [
+    ['name' => 'Get Guote', 'url' => '']
+];
+renderBreadcrumbs($breadcrumbs);
 ?>
 
 <!-- Get a Quote / Book Consultation Page - Moreroom Stone Nigeria -->
